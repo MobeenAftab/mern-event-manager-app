@@ -1,0 +1,5 @@
+# dotenv environment variable files
+.env
+
+# Dont copy node_modules
+node_modules

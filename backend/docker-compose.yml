@@ -1,0 +1,17 @@
+version: '3'
+services:
+  api:
+    image: express-workout-tracker-api
+    build: .
+    networks:
+      - backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/app
+    environment:
+      NODE_ENV: dev
+
+networks:
+  backend:
+    driver: bridge
