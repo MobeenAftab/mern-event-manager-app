@@ -7,10 +7,13 @@ services:
       - backend
     ports:
       - '3000:3000'
+      - '9229:9229'
     volumes:
       - ./:/usr/src/app
     environment:
-      NODE_ENV: dev
+      NODE_ENV: development
+    restart: always
+    #command: npm run dev
 
 networks:
   backend:

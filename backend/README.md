@@ -36,8 +36,10 @@ docker ps -a
 4. Update package.json with some commands to build and run express server.
 5. Add nodemon, ts-node configured by nodemon json to rebuild on project changes.
 6. Dockerize backend server app.
-   Use volume mapping to automatically rebuild app using nodemon.
+   Use volume mapping to automatically rebuild app using nodemon (hot reloading).
    Docker could not find nodemon in container as it was installed globally, added nodemon as a dev dependency to solve this (could also have used preinstall script).
+7. Setup prettier with eslint to lint files on save.
+8. Added debugger to docker container app with `---inspect` flag. Add the `debugger;` breakpoint in code and navigate to `chrome://inspect/#devices` for debugging tools.
 
 ## References
 
@@ -46,6 +48,12 @@ docker ps -a
 [How To Set Up a Node Project With Typescript](https://www.digitalocean.com/community/tutorials/setting-up-a-node-project-with-typescript#step-5-updating-the-package-json-file)
 
 [Let’s Dockerize a Nodejs Express API](https://itnext.io/lets-dockerize-a-nodejs-express-api-22700b4105e4)
+
+[Debugging Guide](https://nodejs.org/en/docs/guides/debugging-getting-started/)
+
+[Debugging Node.js + Typescript Running inside Docker Containers with Hot Reload](https://www.youtube.com/watch?v=1WUoITRINf0)
+
+[How to Speed up Docker Development! 🐳 Hot Reloading, Debuggers, and More!](https://www.youtube.com/watch?v=5JQlFK6MdVQ)
 
 ## Development Notes
 
