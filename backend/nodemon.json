@@ -1,6 +1,6 @@
 {
   "verbose": true,
-  "ignore": ["*.test.js", "src/**/*.spec.ts"],
+  "ignore": ["*.test.js", "src/**/*.spec.ts", "data"],
   "watch": ["src"],
   "ext": "ts,js,json",
   "execMap": {

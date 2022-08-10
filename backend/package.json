@@ -7,18 +7,23 @@
     "build": "tsc",
     "start": "npm run build && node dist/index.js",
     "dev": "nodemon",
+    "docker": "docker compose up api mongodb -d",
+    "docker:build": "docker compose up --build",
     "start:inspect": "nodemon --inspect index.ts",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "lint": "npx eslint . --ext .ts",
     "prettier": "prettier --write .",
     "test:lint": "eslint . && prettier --check .",
-    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "clean:data": "rm -rf data",
+    "clean:modules": "rm -rf node_modules"
   },
   "keywords": [],
   "author": "Mobeen Aftab",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.1",
     "express": "^4.18.1"
   },
   "devDependencies": {
