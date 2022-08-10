@@ -68,6 +68,7 @@ docker logs mongodb
     10.1 Use `.env` to hide sensitive information and pass it into the `docker-compose.yaml` file.
     10.2 mongodb will not create an empty db to begin with, read more about initializing a fresh instance [here](https://hub.docker.com/_/mongo) to create a setup process for db.
     10.3 Added mongo-express as web interface for mongodb.
+    10.4 Load env vairables into express server, install node and express types as dev dependencies.
 
 ## Testing Strategy
 
