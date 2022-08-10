@@ -28,6 +28,27 @@ To see any running containers
 docker ps -a
 ```
 
+To access the shell of a running docker container
+
+```bash
+docker exec -it <container-name> <shell>
+
+docker exec -it mongodb bash
+```
+
+To sign in as authorised mongodb user inside docker shell
+
+```bash
+# Username and password defined in .env file
+mongosh -u <> -p <>
+```
+
+To inspect mongodb logs
+
+```bash
+docker logs mongodb
+```
+
 ## Development Progress
 
 1. Setup project directory with git and npm.
@@ -43,6 +64,11 @@ docker ps -a
 9. Decided to use `vitest` as the testing framework for this project because it natively supports TS, supports Jest as a fallback option.
    9.1 Create project structure for test suite.
    9.2 Research and document the types of unit tests to conduct on a RESTful API.
+10. Add mongodb as the local database within a docker container.
+    10.1 Use `.env` to hide sensitive information and pass it into the `docker-compose.yaml` file.
+    10.2 mongodb will not create an empty db to begin with, read more about initializing a fresh instance [here](https://hub.docker.com/_/mongo) to create a setup process for db.
+    10.3 Added mongo-express as web interface for mongodb.
+    10.4 Load env vairables into express server, install node and express types as dev dependencies.
 
 ## Testing Strategy
 
@@ -115,3 +141,5 @@ A list of notes and potential features to keep track for this project.
 - Add db config file as a singleton for dev and test.
 - Test DB env and scaffolding, generating data for robust testing of db functions.
 - Using docker to manage and run the test.
+- Validation on data inputs (Joi)
+- db schema validation

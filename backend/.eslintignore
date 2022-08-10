@@ -1,5 +1,12 @@
 # don't ever lint node_modules
+
 node_modules
+
 # don't lint build output
+
 dist
 build
+
+# dont lint mongodb data files
+
+data
