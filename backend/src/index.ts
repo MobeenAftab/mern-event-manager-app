@@ -1,6 +1,4 @@
 import * as dotenv from 'dotenv';
-import express from 'express';
-
 const result = dotenv.config();
 const PROD_ENV = process.env.NODE_ENV === 'production';
 
@@ -13,14 +11,21 @@ if (!PROD_ENV) {
   }
 }
 
+import express from 'express';
+import morganMiddleware from './config/morganLogger';
+import errorHandler from './middleware/errorHandler';
+import indexRouter from './routes';
+
 const PORT = PROD_ENV ? process.env?.PORT : 3000;
 const HOST = PROD_ENV ? process.env?.HOST : 'http://localhost';
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('werwrwerw World!');
-});
+app.use(morganMiddleware);
+app.use(`/${process.env.API_VERSION}`, indexRouter);
+
+// Error handler should be the last middleware in use
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   return console.log(`Express is listening at ${HOST}:${PORT}`);

@@ -69,6 +69,10 @@ docker logs mongodb
     10.2 mongodb will not create an empty db to begin with, read more about initializing a fresh instance [here](https://hub.docker.com/_/mongo) to create a setup process for db.
     10.3 Added mongo-express as web interface for mongodb.
     10.4 Load env vairables into express server, install node and express types as dev dependencies.
+11. Add logging to the api by installing `morgan` and `rotating-file-stream` to write log outputs.
+    11.1 Create router structure.
+    11.2 Adopt the middleware error handling strategy with try catch with routes.
+    11.3 Version control the API by adding an api version variable to `.env` and appending it to the begining of the api router path.
 
 ## Testing Strategy
 
@@ -108,6 +112,7 @@ A list of what patterns and how they are used within this project.
 TDD
 Singleton
 Open/Close (SOLID)
+Asyncronous try catch error handling as middleware
 
 ## References
 
