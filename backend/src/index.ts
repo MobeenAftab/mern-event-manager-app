@@ -1,6 +1,4 @@
 import * as dotenv from 'dotenv';
-import express from 'express';
-
 const result = dotenv.config();
 const PROD_ENV = process.env.NODE_ENV === 'production';
 
@@ -13,10 +11,15 @@ if (!PROD_ENV) {
   }
 }
 
+import express from 'express';
+import morganMiddleware from './config/morganLogger';
+
 const PORT = PROD_ENV ? process.env?.PORT : 3000;
 const HOST = PROD_ENV ? process.env?.HOST : 'http://localhost';
 
 const app = express();
+
+app.use(morganMiddleware);
 
 app.get('/', (req, res) => {
   res.send('werwrwerw World!');
