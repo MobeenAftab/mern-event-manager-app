@@ -148,3 +148,13 @@ A list of notes and potential features to keep track for this project.
 - Using docker to manage and run the test.
 - Validation on data inputs (Joi)
 - db schema validation
+- Reading [this](https://www.mongodb.com/compatibility/using-typescript-with-mongodb-tutorial) documents how to use mongodb with TS. It makes an argument as to why you dont need to use mongoose anymore and how to validate your schema at the DB level.
+
+TODO
+
+A possible solution to this is to write the schema and models in mongoose TS.
+Export the validation to the db conn and register the schema validation there.
+
+1. create the default db on mongo init
+2. create a user with the correct roles and permissions
+3. update the mongo connection string
