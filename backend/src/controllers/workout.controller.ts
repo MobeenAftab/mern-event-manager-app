@@ -10,7 +10,7 @@ import { IWorkout, WorkoutModel } from '../models/workout.model';
  *    if id is valid as pre hook virtuals on the workout model.
  */
 
-interface CustomRequest<T> extends Request {
+export interface CustomRequest<T> extends Request {
   body: T;
 }
 

@@ -68,11 +68,22 @@ docker logs mongodb
     10.1 Use `.env` to hide sensitive information and pass it into the `docker-compose.yaml` file.
     10.2 mongodb will not create an empty db to begin with, read more about initializing a fresh instance [here](https://hub.docker.com/_/mongo) to create a setup process for db.
     10.3 Added mongo-express as web interface for mongodb.
-    10.4 Load env vairables into express server, install node and express types as dev dependencies.
+    10.4 Load env variables into express server, install node and express types as dev dependencies.
 11. Add logging to the api by installing `morgan` and `rotating-file-stream` to write log outputs.
     11.1 Create router structure.
     11.2 Adopt the middleware error handling strategy with try catch with routes.
-    11.3 Version control the API by adding an api version variable to `.env` and appending it to the begining of the api router path.
+    11.3 Version control the API by adding an api version variable to `.env` and appending it to the beginning of the api router path.
+    11.4 Create CRUD operations for workout controller and pass those functions to the workout router. Originally planned to have router contain the business logic in order to reduce the number of files but decided against this and created a controller service layer containing all the core logic.
+    11.5 Tested the server using `http` requests which can be found in `./tests/http`.
+12. Noticed an issue when trying to connect to mongodb where the environment variables do not load in. As a temporary fix the dotenv package will also be loaded into mongodb config. Here are some possibilities on how to fix this.
+    12.1 Require the dotenv config via the cli on sever startup.
+    12.2 Modularise the express app config and server creation such that the express app can be exported and dependency injected into the test suite.
+    12.3 Use mock and spy test setups to fake the interaction with api.
+13. Begin writing tests for the workout writer and its CRUD operations. Discovered that express routers and mongoose middleware cannot be unit tested. Those kinds of tests are integration tests that require an external library like `supertest` or nodes internal `fetch` library to make http requests. These integration tests can be mocked or tested against a live server.
+    13.1 Mocker Server: Reading the `vitest` docs they suggest testing a rest api using `MSW (Mock Service Worker)` to mock HTTP requests. This setup does not require any code changes to the server, just some setup in the form of creating a mock server that takes in an array of request and response handlers. Register HTTP actions in the `test/mocks/handlers.ts` file to create mock requests and responses for specific url endpoints. When you make a HTTP request from within the test the service worker will intercept the incoming request and respond with the defined `handler`.
+    13.2 Live Server: Make HTTP requests against the live server pushing data into and reading from a test db. To achieve this the db config will need to be refactored to accept parameters to change the connected db name and running environment context. Would also require some mongodb setup scripts to install a fresh testdb with no data. Can create a fixtures files that had some test data than can be imported on db setup and deleted on shutdown.
+    13.3 Test the schema validation of a model.
+    13.4 A combination of these tests should be implemented to test the robustness of the server as well some smoke tests that can be ran against a hosted cloud environment.
 
 ## Testing Strategy
 
@@ -89,7 +100,7 @@ Test the following for unit tests
 
 ### Integration Testing
 
-Testing multipiple components and modules through various layers of a system. Testing endpoint calls, services, db layer etc.
+Testing multiple components and modules through various layers of a system. Testing endpoint calls, services, db layer etc.
 
 Test the following for integration tests
 
@@ -103,7 +114,7 @@ Test the following for integration tests
 
 ### End-to-end Testing
 
-Testsing processes through a system from begining to end. Test the system meets the business requirements of the project.
+Testing processes through a system from beginning to end. Test the system meets the business requirements of the project.
 
 ## Patterns
 
@@ -112,7 +123,7 @@ A list of what patterns and how they are used within this project.
 TDD
 Singleton
 Open/Close (SOLID)
-Asyncronous try catch error handling as middleware
+Asynchronous try catch error handling as middleware
 
 ## References
 
@@ -132,6 +143,8 @@ Asyncronous try catch error handling as middleware
 
 [Unit Testing Essentials for Express API: A Step-by-Step Guide](https://rrawat.com/blog/unit-test-express-api)
 
+[Service Worker Examples](https://github.com/mswjs/msw/tree/main/test/rest-api)
+
 ## Development Notes and TODOs
 
 A list of notes and potential features to keep track for this project.
@@ -148,7 +161,7 @@ A list of notes and potential features to keep track for this project.
 - Using docker to manage and run the test.
 - Validation on data inputs (Joi)
 - db schema validation
-- Reading [this](https://www.mongodb.com/compatibility/using-typescript-with-mongodb-tutorial) documents how to use mongodb with TS. It makes an argument as to why you dont need to use mongoose anymore and how to validate your schema at the DB level.
+- Reading [this](https://www.mongodb.com/compatibility/using-typescript-with-mongodb-tutorial) documents how to use mongodb with TS. It makes an argument as to why you don't need to use mongoose any more and how to validate your schema at the DB level.
 
 TODO
 

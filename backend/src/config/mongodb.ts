@@ -5,7 +5,10 @@
  *
  */
 
+import * as dotenv from 'dotenv';
 import mongoose, { Mongoose } from 'mongoose';
+
+const result = dotenv.config();
 
 let dbClient: Mongoose;
 
