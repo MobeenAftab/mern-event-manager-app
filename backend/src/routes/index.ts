@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import workoutRouter from './workout/workout';
+import workoutRouter from './workout/workout.router';
 
 const indexRouter = Router();
 
@@ -15,5 +15,5 @@ indexRouter.get('/throw-err', (req, res, next) => {
   }
 });
 
-indexRouter.use('/workout', workoutRouter);
+indexRouter.use('/workouts', workoutRouter);
 export default indexRouter;

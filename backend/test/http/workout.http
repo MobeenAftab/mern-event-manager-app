@@ -1,0 +1,49 @@
+@baseUrl = http://localhost:3000/v1/
+@workouts = workouts
+
+GET {{$dotenv BASE_URL}}
+###
+
+GET {{baseUrl}}/
+
+###
+
+GET {{$dotenv BASE_URL}}/{{workouts}}/ HTTP/1.1
+
+###
+
+POST {{$dotenv BASE_URL}}/{{workouts}}/ HTTP/1.1
+content-type: application/json
+
+{
+  "title": "test2",
+  "reps": 11,
+  "load": 12
+}
+
+###
+
+GET {{$dotenv BASE_URL}}/{{workouts}}/ HTTP/1.1
+content-type: application/json
+
+{
+  "title": "test1",
+  "reps": 11,
+  "load": 12
+}
+
+###
+GET {{$dotenv BASE_URL}}/{{workouts}}/62fb3349f6b40d50e3ef2eb1 HTTP/1.1
+
+###
+PATCH {{$dotenv BASE_URL}}/{{workouts}}/62fb3349f6b40d50e3ef2eb1 HTTP/1.1
+content-type: application/json
+
+{
+  "title": "edittest",
+  "reps": 1,
+  "load": 2
+}
+
+###
+DELETE {{$dotenv BASE_URL}}/{{workouts}}/62fb3d988af535481c418e85  HTTP/1.1
