@@ -13,7 +13,7 @@ router.post('/', createWorkout);
 
 router.get('/', getWorkouts);
 
-router.get('/workout/:id?', getWorkout);
+router.get('/:id', getWorkout);
 
 router.patch('/:id', updateWorkout);
 

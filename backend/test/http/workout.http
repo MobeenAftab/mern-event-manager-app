@@ -16,14 +16,14 @@ POST {{$dotenv BASE_URL}}/{{workouts}}/ HTTP/1.1
 content-type: application/json
 
 {
-  "title": "test1",
+  "title": "test2",
   "reps": 11,
   "load": 12
 }
 
 ###
 
-GET {{$dotenv BASE_URL}}/{{workouts}}/workout/ HTTP/1.1
+GET {{$dotenv BASE_URL}}/{{workouts}}/ HTTP/1.1
 content-type: application/json
 
 {
@@ -33,10 +33,10 @@ content-type: application/json
 }
 
 ###
-GET {{$dotenv BASE_URL}}/{{workouts}}/workout/62f6cdca705ac42e09e836e3 HTTP/1.1
+GET {{$dotenv BASE_URL}}/{{workouts}}/62fb3349f6b40d50e3ef2eb1 HTTP/1.1
 
 ###
-PATCH {{$dotenv BASE_URL}}/{{workouts}}/62f6cdca705ac42e09e836e3 HTTP/1.1
+PATCH {{$dotenv BASE_URL}}/{{workouts}}/62fb3349f6b40d50e3ef2eb1 HTTP/1.1
 content-type: application/json
 
 {
@@ -46,4 +46,4 @@ content-type: application/json
 }
 
 ###
-DELETE {{$dotenv BASE_URL}}/{{workouts}}/62f6cdca705ac42e09e836e3 HTTP/1.1
+DELETE {{$dotenv BASE_URL}}/{{workouts}}/62fb3d988af535481c418e85  HTTP/1.1

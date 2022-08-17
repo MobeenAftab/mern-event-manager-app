@@ -1,55 +1,48 @@
 import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import { IWorkout, WorkoutModel } from '../models/workout.model';
-/**
- * TODO:
- *  Can refactor this file to remove the custom request interface and
- *    assign the body to the IWorkout interface.
- *
- *  Lots fo repeated code, can refactor the common code blocks like checking
- *    if id is valid as pre hook virtuals on the workout model.
- */
-
-export interface CustomRequest<T> extends Request {
-  body: T;
-}
 
 export const getWorkouts = async (
-  req: CustomRequest<IWorkout>,
+  req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const workouts = await WorkoutModel.find({}).sort({ createdAt: -1 });
-    res.status(200).json({
-      msg: 'GET: getWorkouts',
-      workouts,
+    const workouts: Array<IWorkout> = await WorkoutModel.find({}).sort({
+      createdAt: -1,
     });
+
+    if (workouts.length >= 1) {
+      res.status(200).json({
+        workouts,
+      });
+    } else {
+      res.status(404).json({
+        msg: 'No workouts found.',
+        workouts: null,
+      });
+    }
   } catch (error) {
     next(error);
   }
 };
 
 export const getWorkout = async (
-  req: CustomRequest<IWorkout>,
+  req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
     const { id } = req.params;
     if (mongoose.Types.ObjectId.isValid(id)) {
-      const workout = await WorkoutModel.findById(req.params.id);
+      const workout: IWorkout = await WorkoutModel.findById(id);
       res.status(200).json({
-        msg: 'GET: getWorkout',
         workout,
       });
     } else {
-      const workouts = await WorkoutModel.find(req.body).sort({
-        createdAt: -1,
-      });
+      const workout: IWorkout = await WorkoutModel.findOne(req.body);
       res.status(200).json({
-        msg: 'GET: getWorkout',
-        workouts,
+        workout,
       });
     }
   } catch (error) {
@@ -58,14 +51,15 @@ export const getWorkout = async (
 };
 
 export const createWorkout = async (
-  req: CustomRequest<IWorkout>,
+  req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const workout = await WorkoutModel.create(req.body as IWorkout);
+    const newWorkout: IWorkout = new WorkoutModel({ ...req.body });
+    const workout: IWorkout = await WorkoutModel.create(newWorkout);
+
     res.status(200).json({
-      msg: 'POST: workout',
       workout,
     });
   } catch (error) {
@@ -74,7 +68,7 @@ export const createWorkout = async (
 };
 
 export const updateWorkout = async (
-  req: CustomRequest<IWorkout>,
+  req: Request,
   res: Response,
   next: NextFunction
 ) => {
@@ -88,18 +82,12 @@ export const updateWorkout = async (
       );
       if (!workout) {
         return res.status(404).json({
-          msg: 'PATHC: updateWorkout',
           error: 'No such workout ID',
+          id,
         });
       }
       res.status(200).json({
-        msg: 'PATHC: updateWorkout',
         workout,
-      });
-    } else {
-      return res.status(404).json({
-        msg: 'PATHC: updateWorkout',
-        error: 'No such workout ID',
       });
     }
   } catch (error) {
@@ -108,27 +96,25 @@ export const updateWorkout = async (
 };
 
 export const deleteWorkout = async (
-  req: CustomRequest<IWorkout>,
+  req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
     const { id } = req.params;
     if (mongoose.Types.ObjectId.isValid(id)) {
-      const workout = await WorkoutModel.findByIdAndDelete({ _id: id });
+      const workout: IWorkout = await WorkoutModel.findByIdAndDelete({
+        _id: id,
+      });
       if (!workout) {
         return res.status(404).json({
-          msg: 'DELETE: deleteWorkout',
           error: 'No such workout ID',
+          id,
         });
       }
       res.status(200).json({
-        msg: 'DELETE: deleteWorkout',
-      });
-    } else {
-      return res.status(404).json({
-        msg: 'DELETE: deleteWorkout',
-        error: 'No such workout ID',
+        msg: 'Workout deleted',
+        workout,
       });
     }
   } catch (error) {
