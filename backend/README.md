@@ -84,6 +84,8 @@ docker logs mongodb
     13.2 Live Server: Make HTTP requests against the live server pushing data into and reading from a test db. To achieve this the db config will need to be refactored to accept parameters to change the connected db name and running environment context. Would also require some mongodb setup scripts to install a fresh testdb with no data. Can create a fixtures files that had some test data than can be imported on db setup and deleted on shutdown.
     13.3 Test the schema validation of a model.
     13.4 A combination of these tests should be implemented to test the robustness of the server as well some smoke tests that can be ran against a hosted cloud environment.
+14. Used create react app to begin the frontend project with typescript. Could have gone with a full monorepo approach where the backend and frontend live in the same directory and share the same models definitions.
+    14.1 Need a way to share the backend models with the frontend and decided to use Swagger/Open ai to generate a client interface for the frontend. Plan to keep the backend the source of truth and the client dumb.
 
 ## Testing Strategy
 
