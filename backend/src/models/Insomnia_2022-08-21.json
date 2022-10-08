@@ -1,0 +1,224 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2022-08-21T15:05:25.188Z",
+  "__export_source": "insomnia.desktop.app:v2022.5.0",
+  "resources": [
+    {
+      "_id": "req_4bc44b45f8344c6a93ad156b684f3217",
+      "parentId": "fld_e953b3ee8e8c453bab9c90591b93e6ac",
+      "modified": 1661094290410,
+      "created": 1661072900510,
+      "url": "{{BASE_URL}}/workouts/:id",
+      "name": "Delete Workout",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_621b2dd82c4a4ef486107f1ae4e41942",
+          "name": "id",
+          "value": "62fd267141dc9f5cc0ace33b",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1661072900510,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_e953b3ee8e8c453bab9c90591b93e6ac",
+      "parentId": "wrk_3e05eaac68834cc2b5ca4e38114b400f",
+      "modified": 1660334501648,
+      "created": 1660334282653,
+      "name": "Workout",
+      "description": "",
+      "environment": { "BASE_URL": "http://localhost:3000/v1" },
+      "environmentPropertyOrder": { "&": ["BASE_URL"] },
+      "metaSortKey": -1660334282653,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_3e05eaac68834cc2b5ca4e38114b400f",
+      "parentId": null,
+      "modified": 1660334263648,
+      "created": 1660334263648,
+      "name": "New Document",
+      "description": "",
+      "scope": "design",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_de7f068044104f968347b75f08de6422",
+      "parentId": "fld_e953b3ee8e8c453bab9c90591b93e6ac",
+      "modified": 1661094182402,
+      "created": 1661072854989,
+      "url": "{{BASE_URL}}/workouts/:id",
+      "name": "Update Workout",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Edit\",\n  \"reps\": 11,\n  \"load\": 11\n}"
+      },
+      "parameters": [
+        {
+          "id": "pair_704d134d85684c33920c4b294d5ed942",
+          "name": "id",
+          "value": "62fd267141dc9f5cc0ace33b",
+          "description": ""
+        }
+      ],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_ff488e3bba4b40f1b6fe644f9112e9f6"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1661072854989,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_d5e78375993042e28cc647839adb0bdc",
+      "parentId": "fld_e953b3ee8e8c453bab9c90591b93e6ac",
+      "modified": 1661094147079,
+      "created": 1661072786158,
+      "url": "{{BASE_URL}}/workouts/:id",
+      "name": "Get Workout",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_f9ba57807f9c45a59d9a50f1f4420e6a",
+          "name": "id",
+          "value": "62fd267141dc9f5cc0ace33b",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1661072786158,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_87970fcfe4a149848b6ebb927c2b86c1",
+      "parentId": "fld_e953b3ee8e8c453bab9c90591b93e6ac",
+      "modified": 1661094069993,
+      "created": 1661072681303,
+      "url": "{{BASE_URL}}/workouts/",
+      "name": "Get Workouts",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1661072681303,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_3deff80a1f624442bd88d373b411369e",
+      "parentId": "fld_e953b3ee8e8c453bab9c90591b93e6ac",
+      "modified": 1661094122012,
+      "created": 1660334427917,
+      "url": "{{BASE_URL}}/workouts/",
+      "name": "Create Workout",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"situp\",\n  \"reps\": 1,\n  \"load\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_ee8c47c000a4421f9f963ba85f50532b"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1660334427917,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_967bde79748bc6e890cf05c754d65b23b3598783",
+      "parentId": "wrk_3e05eaac68834cc2b5ca4e38114b400f",
+      "modified": 1660334289564,
+      "created": 1660334263684,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": {},
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1660334263684,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_967bde79748bc6e890cf05c754d65b23b3598783",
+      "parentId": "wrk_3e05eaac68834cc2b5ca4e38114b400f",
+      "modified": 1660334263692,
+      "created": 1660334263692,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_63742c393708452ab100f132b9c465ce",
+      "parentId": "wrk_3e05eaac68834cc2b5ca4e38114b400f",
+      "modified": 1661072669503,
+      "created": 1660334263676,
+      "fileName": "Workouts",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "uts_fd7867b9724643d99be8f92b2fd20d29",
+      "parentId": "wrk_3e05eaac68834cc2b5ca4e38114b400f",
+      "modified": 1660334263704,
+      "created": 1660334263704,
+      "name": "Example Test Suite",
+      "_type": "unit_test_suite"
+    }
+  ]
+}

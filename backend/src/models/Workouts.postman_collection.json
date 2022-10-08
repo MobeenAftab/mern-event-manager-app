@@ -1,0 +1,403 @@
+{
+	"info": {
+		"_postman_id": "60e9db4c-eafa-49e7-b19d-00790cb249b1",
+		"name": "Workouts",
+		"description": "HAR To Postman Generated Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14402036"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/v1/workouts/62fd267141dc9f5cc0ace33b",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL1}}/v1/workouts/62fd267141dc9f5cc0ace33b",
+					"host": [
+						"{{baseURL1}}"
+					],
+					"path": [
+						"v1",
+						"workouts",
+						"62fd267141dc9f5cc0ace33b"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "successfully / 200",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/v1/workouts/62fd267141dc9f5cc0ace33b",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"v1",
+								"workouts",
+								"62fd267141dc9f5cc0ace33b"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "191"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"bf-OfhpWB4SLs51bQ2jJKIo6J9RxP8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 Aug 2022 15:03:15 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "application/json; charset=utf-8 content type is not supported in the response body"
+				}
+			]
+		},
+		{
+			"name": "localhost:3000/v1/workouts/62fd267141dc9f5cc0ace33b",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL1}}/v1/workouts/62fd267141dc9f5cc0ace33b",
+					"host": [
+						"{{baseURL1}}"
+					],
+					"path": [
+						"v1",
+						"workouts",
+						"62fd267141dc9f5cc0ace33b"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "successfully / 200",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/v1/workouts/62fd267141dc9f5cc0ace33b",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"v1",
+								"workouts",
+								"62fd267141dc9f5cc0ace33b"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "167"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a7-ANNBXmQtlN6azIzzu8JeYLu3dCk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 Aug 2022 15:03:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "application/json; charset=utf-8 content type is not supported in the response body"
+				}
+			]
+		},
+		{
+			"name": "localhost:3000/v1/workouts/62fd267141dc9f5cc0ace33b",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL1}}/v1/workouts/62fd267141dc9f5cc0ace33b",
+					"host": [
+						"{{baseURL1}}"
+					],
+					"path": [
+						"v1",
+						"workouts",
+						"62fd267141dc9f5cc0ace33b"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "successfully / 200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/v1/workouts/62fd267141dc9f5cc0ace33b",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"v1",
+								"workouts",
+								"62fd267141dc9f5cc0ace33b"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "172"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ac-cIsSDXGlKvNfOZOi1Tw4PDzwmfA\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 Aug 2022 15:02:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "application/json; charset=utf-8 content type is not supported in the response body"
+				}
+			]
+		},
+		{
+			"name": "localhost:3000/v1/workouts/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL1}}/v1/workouts/",
+					"host": [
+						"{{baseURL1}}"
+					],
+					"path": [
+						"v1",
+						"workouts",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "successfully / 200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/v1/workouts/",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"v1",
+								"workouts",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3818"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"eea-QUWWOvOt2lW40Tfstp+VzxeThUQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 Aug 2022 14:53:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "application/json; charset=utf-8 content type is not supported in the response body"
+				}
+			]
+		},
+		{
+			"name": "localhost:3000/v1/workouts/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL1}}/v1/workouts/",
+					"host": [
+						"{{baseURL1}}"
+					],
+					"path": [
+						"v1",
+						"workouts",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "successfully / 200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/v1/workouts/",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"v1",
+								"workouts",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "166"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a6-jKf0xSPaAmiR6lgV6ppO8qa2m2g\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 Aug 2022 09:06:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "application/json; charset=utf-8 content type is not supported in the response body"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL1",
+			"value": "http://localhost:3000",
+			"type": "any"
+		}
+	]
+}

@@ -1,0 +1,241 @@
+openapi: 3.0.0
+info:
+  title: Workouts
+  description: HAR To Postman Generated Collection
+  version: 1.0.0
+servers:
+  - url: http://{{baseurl1}}
+paths:
+  /v1/workouts/62fd267141dc9f5cc0ace33b:
+    delete:
+      tags:
+        - General
+      summary: localhost:3000/v1/workouts/62fd267141dc9f5cc0ace33b
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '191'
+            ETag:
+              schema:
+                type: string
+                example: W/"bf-OfhpWB4SLs51bQ2jJKIo6J9RxP8"
+            Date:
+              schema:
+                type: string
+                example: Sun, 21 Aug 2022 15:03:15 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: >-
+                application/json; charset=utf-8 content type is not supported in
+                the response body
+    patch:
+      tags:
+        - General
+      summary: localhost:3000/v1/workouts/62fd267141dc9f5cc0ace33b
+      requestBody:
+        content: {}
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '167'
+            ETag:
+              schema:
+                type: string
+                example: W/"a7-ANNBXmQtlN6azIzzu8JeYLu3dCk"
+            Date:
+              schema:
+                type: string
+                example: Sun, 21 Aug 2022 15:03:04 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: >-
+                application/json; charset=utf-8 content type is not supported in
+                the response body
+    get:
+      tags:
+        - General
+      summary: localhost:3000/v1/workouts/62fd267141dc9f5cc0ace33b
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '172'
+            ETag:
+              schema:
+                type: string
+                example: W/"ac-cIsSDXGlKvNfOZOi1Tw4PDzwmfA"
+            Date:
+              schema:
+                type: string
+                example: Sun, 21 Aug 2022 15:02:28 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: >-
+                application/json; charset=utf-8 content type is not supported in
+                the response body
+  /v1/workouts/:
+    get:
+      tags:
+        - General
+      summary: localhost:3000/v1/workouts/
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '3818'
+            ETag:
+              schema:
+                type: string
+                example: W/"eea-QUWWOvOt2lW40Tfstp+VzxeThUQ"
+            Date:
+              schema:
+                type: string
+                example: Sun, 21 Aug 2022 14:53:25 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: >-
+                application/json; charset=utf-8 content type is not supported in
+                the response body
+    post:
+      tags:
+        - General
+      summary: localhost:3000/v1/workouts/
+      requestBody:
+        content: {}
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '166'
+            ETag:
+              schema:
+                type: string
+                example: W/"a6-jKf0xSPaAmiR6lgV6ppO8qa2m2g"
+            Date:
+              schema:
+                type: string
+                example: Sun, 21 Aug 2022 09:06:02 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: >-
+                application/json; charset=utf-8 content type is not supported in
+                the response body

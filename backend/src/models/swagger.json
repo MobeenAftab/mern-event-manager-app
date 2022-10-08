@@ -1,0 +1,147 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "",
+    "description": "",
+    "version": ""
+  },
+  "servers": [
+    {
+      "url": "",
+      "description": "Server"
+    }
+  ],
+  "consumes": ["application/json"],
+  "paths": {
+    "/": {
+      "delete": {
+        "summary": "Delete Workout",
+        "description": "",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "examples": {
+              "application/json": ""
+            }
+          }
+        },
+        "tags": ["Workout"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string"
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update Workout",
+        "description": "",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "examples": {
+              "application/json": ""
+            }
+          }
+        },
+        "tags": ["Workout"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": "string",
+                  "reps": "integer",
+                  "load": "integer"
+                }
+              },
+              "example": {
+                "title": "Edit",
+                "reps": 11,
+                "load": 11
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get Workout",
+        "description": "",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "examples": {
+              "application/json": ""
+            }
+          }
+        },
+        "tags": ["Workout"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/workouts/": {
+      "get": {
+        "summary": "Get Workouts",
+        "description": "",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "examples": {
+              "application/json": ""
+            }
+          }
+        },
+        "tags": ["Workout"],
+        "parameters": []
+      },
+      "post": {
+        "summary": "Create Workout",
+        "description": "",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "examples": {
+              "application/json": ""
+            }
+          }
+        },
+        "tags": ["Workout"],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": "string",
+                  "reps": "integer",
+                  "load": "integer"
+                }
+              },
+              "example": {
+                "title": "situp",
+                "reps": 1,
+                "load": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

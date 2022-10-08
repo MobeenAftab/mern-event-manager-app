@@ -181,8 +181,8 @@ Export the validation to the db conn and register the schema validation there.
 
 ### Open API tools to consider
 
-1. https://github.com/cdimascio/express-openapi-validator
-2. https://github.com/oas-tools/oas-tools
+1. [express-openapi-validator](https://github.com/cdimascio/express-openapi-validator)
+2. [oas-tools](https://github.com/oas-tools/oas-tools)
 3. [response2schema](https://github.com/dsuurlant/response2schema)
 4. [apisprout](https://github.com/danielgtaylor/apisprout)
 5. [loopback](https://loopback.io/)
