@@ -85,7 +85,10 @@ docker logs mongodb
     13.3 Test the schema validation of a model.
     13.4 A combination of these tests should be implemented to test the robustness of the server as well some smoke tests that can be ran against a hosted cloud environment.
 14. Used create react app to begin the frontend project with typescript. Could have gone with a full monorepo approach where the backend and frontend live in the same directory and share the same models definitions.
-    14.1 Need a way to share the backend models with the frontend and decided to use Swagger/Open ai to generate a client interface for the frontend. Plan to keep the backend the source of truth and the client dumb.
+    14.1 Need a way to share the backend models with the frontend and decided to use Swagger/Open api to generate a client interface for the frontend. Plan to keep the backend the source of truth and the client dumb.
+15. Generating REST api documentation according to the Open API spec. Need to annotate models, controllers and routes with type descriptors, parameter, and comments. This is done using `jsdoc` to add descriptors to the codebase and then use `swagger-ui-express` to generate the api documentation based on `jsdoc`.
+    15.1 Having to maintain `jsdoc` annotation add an extra layer of maintenance where the annotation must manually be maintained and checked for correctness. This is error prone to human mistakes and becoming out of sync if the api changes. There are many tools described at [OpenAPI.Tools](https://openapi.tools//) that can be used in combination to build, maintain, generate, test, perform security and performance analysis on Open API specification.
+    15.2 Using this tech stack there is no way to auto generate an Open api specification file without importing another framework or library and refactoring the current code base. Decided to go do the minimal amount of work to auto generate an api document based on the Open API spec using `jsdoc` however there is much more that can be done to improve the security and robustness of the REST api. At a later date more libraries can be added from OpenAPI.Tools to the project to validate, test and help maintain the api.
 
 ## Testing Strategy
 
@@ -147,6 +150,8 @@ Asynchronous try catch error handling as middleware
 
 [Service Worker Examples](https://github.com/mswjs/msw/tree/main/test/rest-api)
 
+[OpenAPI.Tools](https://openapi.tools//)
+
 ## Development Notes and TODOs
 
 A list of notes and potential features to keep track for this project.
@@ -173,3 +178,21 @@ Export the validation to the db conn and register the schema validation there.
 1. create the default db on mongo init
 2. create a user with the correct roles and permissions
 3. update the mongo connection string
+
+### Open API tools to consider
+
+1. https://github.com/cdimascio/express-openapi-validator
+2. https://github.com/oas-tools/oas-tools
+3. [response2schema](https://github.com/dsuurlant/response2schema)
+4. [apisprout](https://github.com/danielgtaylor/apisprout)
+5. [loopback](https://loopback.io/)
+6. [openapi-enforcer](https://www.npmjs.com/package/openapi-enforcer)
+7. [openapi-backend](https://www.npmjs.com/package/openapi-backend)
+8. [express-openapi-validator](https://github.com/cdimascio/express-openapi-validator)
+9. [oa-client](https://github.com/ninofiliu/oa-client)
+10. [avantation](https://www.avantation.in/)
+11. [json-schema-to-openapi-schema](https://www.npmjs.com/package/@openapi-contrib/json-schema-to-openapi-schema)
+12. [har-to-openapi](https://github.com/jonluca/har-to-openapi)
+13. [postman-to-openapi](https://www.npmjs.com/package/postman-to-openapi)
+14. [swaggomnia](https://github.com/Fyb3roptik/swaggomnia)
+15. [Convert Postman Collections Into OpenAPI 3.1](https://www.postman.com/postman/workspace/postman-open-technologies-convert-postman-collections-into-openapi/overview)

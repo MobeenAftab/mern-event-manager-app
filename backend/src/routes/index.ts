@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from '../middleware/swaggerUi';
 import workoutRouter from './workout/workout.router';
 
 const indexRouter = Router();
@@ -16,4 +18,6 @@ indexRouter.get('/throw-err', (req, res, next) => {
 });
 
 indexRouter.use('/workouts', workoutRouter);
+
+indexRouter.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 export default indexRouter;
