@@ -89,6 +89,34 @@ docker logs mongodb
 15. Generating REST api documentation according to the Open API spec. Need to annotate models, controllers and routes with type descriptors, parameter, and comments. This is done using `jsdoc` to add descriptors to the codebase and then use `swagger-ui-express` to generate the api documentation based on `jsdoc`.
     15.1 Having to maintain `jsdoc` annotation add an extra layer of maintenance where the annotation must manually be maintained and checked for correctness. This is error prone to human mistakes and becoming out of sync if the api changes. There are many tools described at [OpenAPI.Tools](https://openapi.tools//) that can be used in combination to build, maintain, generate, test, perform security and performance analysis on Open API specification.
     15.2 Using this tech stack there is no way to auto generate an Open api specification file without importing another framework or library and refactoring the current code base. Decided to go do the minimal amount of work to auto generate an api document based on the Open API spec using `jsdoc` however there is much more that can be done to improve the security and robustness of the REST api. At a later date more libraries can be added from OpenAPI.Tools to the project to validate, test and help maintain the api.
+16. Investigating generating an openAPI spec from TS has proven to be difficult to adapt to the existing code base. The enterprise or standard method of having an openAPI compliant REST API is to take the spec first approach and then generate stubs based on the openAPI spec. Adopting this code base to use TS decorators to produce an OpenAPI specification would be a waste of effort and time. It is better to now refactor this project with a spec first approach to generate TS interfaces. This should keep the development and deployment workflow simple and generate client stubs for teh front end to consume.
+
+    16.1 Outcome at this stage to advance the project:
+
+    - Write openAPI spec.
+    - Define URL, request, query, parameters.
+    - Define Requested and Response body for endpoints.
+    - Generate TS interfaces based on openAPI spec.
+    - Type Checking for request and response body.
+    - Find a way to test the openAPI spec is semantically valid and generates valid TS stubs.
+    - Generate swagger express documentation.
+    - Use openAPI spec to generate client stub for front end.
+
+    Potential Solutions
+
+    Contract first approach
+
+    1. Design a API specification.
+    2. Using the specification generate TS stubs.
+    3. Generate swagger doc based on OpenAPI spec.
+
+    Code First Approach
+
+    1. Use a library like JSdoc or TSdoc to annotate code with comments or another library to decorate code.
+    2. Generate OpenAPI spec based on annotation or decoration.
+    3. Generate swagger doc based on OpenAPI spec.
+
+    With the above options it would be best to find the suitable libraries and tools to try both workflows to understand the advantages and disadvantages of each.
 
 ## Testing Strategy
 
