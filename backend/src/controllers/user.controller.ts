@@ -41,7 +41,10 @@ export const createUser = async (
     const user: IUser = new User({ ...req.body });
     user.password = await bcrypt.hash(user.password, 10);
 
-    return await User.create(user);
+    const userDoc: IUser = await User.create(user);
+    res.status(200).json({
+      userDoc,
+    });
   } catch (error) {
     return next(error);
   }
@@ -57,11 +60,9 @@ export const updateUser = async (
   try {
     const { id } = req.params;
     if (mongoose.Types.ObjectId.isValid(id)) {
-      const user: IUser = new User({ ...req.body });
-
-      const userDoc = await User.findOneAndUpdate(
+      const user = await User.findOneAndUpdate(
         { _id: id },
-        { user },
+        { ...req.body },
         { returnDocument: 'after' }
       );
       if (!user) {
@@ -71,7 +72,7 @@ export const updateUser = async (
         });
       }
       res.status(200).json({
-        userDoc,
+        user,
       });
     }
   } catch (error) {
@@ -113,13 +114,13 @@ export const getUsers = async (
   next: NextFunction
 ) => {
   try {
-    const user: Array<IUser> = await User.find({}).sort({
+    const users: Array<IUser> = await User.find({}).sort({
       createdAt: -1,
     });
 
-    if (user.length >= 1) {
+    if (users.length >= 1) {
       res.status(200).json({
-        user,
+        users,
       });
     } else {
       res.status(404).json({

@@ -115,6 +115,9 @@ docker logs mongodb
     15.4 Research how to handle promise rejection within express middleware without breaking app flow.
     15.5 How to write asynchronous routes and controllers in express.
     15.6 How can the system handle updating a password? Updating a password or resetting one should use the existing update user route and refer the business logic to the client or a middleware to detect password change. Should research this further for best practice on managing user credentials in a DB and object.
+    15.7 Update the user search functionality to provide query filtering and sorting.
+    15.8 Created http fixtures for testing endpoints and mock data for integration testing.
+    15.9 Created handlers for users integration testing. Testing will be a shallow smoke testing at this stage. Testing coverage can be improved at a later stage when the app can handle decrypting passwords, field validation on inputs like email, phone number, generating fake data on each run. Current integration tests only use mock requests and responses using [Mock Service Worker](https://mswjs.io/docs/), setup a test environment with docker and automate a test suite to test data flow simulating operations in live environment and.
 
 ## Testing Strategy
 
