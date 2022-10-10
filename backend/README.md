@@ -1,24 +1,15 @@
 # Features
 
 - NodeJS Express RESTful API written in TypeScript.
+- Modularised architecture with functionality grouped component design.
 - Dockerized development environment using docker compose.
   - Server and MongoDb containers.
 - Automated testing with vitest.
-- Testing endpoints with postman.
-- Adhearing to the OpenAPI v3 spec.
-
+  - Mock integration testing using Mock Service Workers.
+  - HTTP endpoint testing.
+- Adhering to the OpenAPI v3 spec.
 - Generated swagger API documentation.
 - Generated code documentation.
-
-Patterns
-
-- SOLID Principles.
-- MVC style architecture.
-- Separation of concerns.
-
-# Motivation
-
-# TODO
 
 # Running The App Locally
 
@@ -154,10 +145,11 @@ Testing processes through a system from beginning to end. Test the system meets 
 
 A list of what patterns and how they are used within this project.
 
-TDD
 Singleton
 Open/Close (SOLID)
-Asynchronous try catch error handling as middleware
+Non blocking asynchronous flow
+MVC style architecture
+Separation of concerns
 
 ## References
 
