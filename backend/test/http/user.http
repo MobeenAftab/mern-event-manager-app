@@ -1,0 +1,58 @@
+@baseUrl = http://localhost:3000/v1/
+@users = users
+
+GET {{$dotenv BASE_URL}}
+###
+
+GET {{baseUrl}}/
+
+###
+
+GET {{$dotenv BASE_URL}}/{{users}}/ HTTP/1.1
+
+###
+
+POST {{$dotenv BASE_URL}}/{{users}}/ HTTP/1.1
+content-type: application/json
+
+{
+  "email": "usersTwo@remail1.co.uk",
+  "firstName": "User",
+  "middleName": "of",
+  "lastName": "two",
+  "password": "IShouldBeHashed",
+  "mobileNumber": 12,
+  "homePhone": 12,
+  "emergencyContactName": "None",
+  "emergencyContactNumber": 12212,
+  "canDrive": true,
+  "isAdmin": false
+}
+
+###
+
+GET {{$dotenv BASE_URL}}/{{users}}/ HTTP/1.1
+content-type: application/json
+
+{
+  "id": "634437e4cb893e821ef56a9b",
+  "email": "usersTwo@remail1.co.uk"
+}
+
+###
+
+GET {{$dotenv BASE_URL}}/{{users}}/634437e4cb893e821ef56a9b/ HTTP/1.1
+content-type: application/json
+
+###
+
+PATCH {{$dotenv BASE_URL}}/{{users}}/634437e4cb893e821ef56a9b HTTP/1.1
+content-type: application/json
+
+{
+  "firstName": "edittest",
+  "mobileNumber": 1
+}
+
+###
+DELETE {{$dotenv BASE_URL}}/{{users}}/634437e4cb893e821ef56a9b  HTTP/1.1

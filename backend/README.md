@@ -1,3 +1,16 @@
+# Features
+
+- NodeJS Express RESTful API written in TypeScript.
+- Modularised architecture with functionality grouped component design.
+- Dockerized development environment using docker compose.
+  - Server and MongoDb containers.
+- Automated testing with vitest.
+  - Mock integration testing using Mock Service Workers.
+  - HTTP endpoint testing.
+- Adhering to the OpenAPI v3 spec.
+- Generated swagger API documentation.
+- Generated code documentation.
+
 # Running The App Locally
 
 The development environment uses Docker to run the express api and database instances. To start these backend services locally use the following commands.
@@ -86,6 +99,16 @@ docker logs mongodb
     13.4 A combination of these tests should be implemented to test the robustness of the server as well some smoke tests that can be ran against a hosted cloud environment.
 14. Used create react app to begin the frontend project with typescript. Could have gone with a full monorepo approach where the backend and frontend live in the same directory and share the same models definitions.
     14.1 Need a way to share the backend models with the frontend and decided to use Swagger/Open ai to generate a client interface for the frontend. Plan to keep the backend the source of truth and the client dumb.
+15. Create user model, interface, routes and controller.
+    15.1 Created the user model and interface. Will need to refactor the model later for strongly typed nested document models, read more [here](https://mongoosejs.com/docs/typescript/subdocuments.html). Read [this](https://mongoosejs.com/docs/typescript/schemas.html#arrays) when defining a interface or schema for an array file of a sub document type.
+    15.2 Read further into `HydratedDocument` in mongoose. Might need to change the return types of documents from MongoDB for TS to infer Mongoose specific features.
+    15.3 Installed `bcrypt` to secure sensitive data encryption.
+    15.4 Research how to handle promise rejection within express middleware without breaking app flow.
+    15.5 How to write asynchronous routes and controllers in express.
+    15.6 How can the system handle updating a password? Updating a password or resetting one should use the existing update user route and refer the business logic to the client or a middleware to detect password change. Should research this further for best practice on managing user credentials in a DB and object.
+    15.7 Update the user search functionality to provide query filtering and sorting.
+    15.8 Created http fixtures for testing endpoints and mock data for integration testing.
+    15.9 Created handlers for users integration testing. Testing will be a shallow smoke testing at this stage. Testing coverage can be improved at a later stage when the app can handle decrypting passwords, field validation on inputs like email, phone number, generating fake data on each run. Current integration tests only use mock requests and responses using [Mock Service Worker](https://mswjs.io/docs/), setup a test environment with docker and automate a test suite to test data flow simulating operations in live environment and.
 
 ## Testing Strategy
 
@@ -122,10 +145,11 @@ Testing processes through a system from beginning to end. Test the system meets 
 
 A list of what patterns and how they are used within this project.
 
-TDD
 Singleton
 Open/Close (SOLID)
-Asynchronous try catch error handling as middleware
+Non blocking asynchronous flow
+MVC style architecture
+Separation of concerns
 
 ## References
 

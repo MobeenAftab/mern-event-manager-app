@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import userRouter from './user/user.router';
 import workoutRouter from './workout/workout.router';
 
 const indexRouter = Router();
@@ -15,5 +16,7 @@ indexRouter.get('/throw-err', (req, res, next) => {
   }
 });
 
+indexRouter.use('/users', userRouter);
 indexRouter.use('/workouts', workoutRouter);
+
 export default indexRouter;
