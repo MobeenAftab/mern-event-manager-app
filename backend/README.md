@@ -1,3 +1,25 @@
+# Features
+
+- NodeJS Express RESTful API written in TypeScript.
+- Dockerized development environment using docker compose.
+  - Server and MongoDb containers.
+- Automated testing with vitest.
+- Testing endpoints with postman.
+- Adhearing to the OpenAPI v3 spec.
+
+- Generated swagger API documentation.
+- Generated code documentation.
+
+Patterns
+
+- SOLID Principles.
+- MVC style architecture.
+- Separation of concerns.
+
+# Motivation
+
+# TODO
+
 # Running The App Locally
 
 The development environment uses Docker to run the express api and database instances. To start these backend services locally use the following commands.
@@ -86,6 +108,9 @@ docker logs mongodb
     13.4 A combination of these tests should be implemented to test the robustness of the server as well some smoke tests that can be ran against a hosted cloud environment.
 14. Used create react app to begin the frontend project with typescript. Could have gone with a full monorepo approach where the backend and frontend live in the same directory and share the same models definitions.
     14.1 Need a way to share the backend models with the frontend and decided to use Swagger/Open ai to generate a client interface for the frontend. Plan to keep the backend the source of truth and the client dumb.
+15. Create user model, interface, routes and controller.
+    15.1 Created the user model and interface. Will need to refactor the model later for strongly typed nested document models, read more [here](https://mongoosejs.com/docs/typescript/subdocuments.html). Read [this](https://mongoosejs.com/docs/typescript/schemas.html#arrays) when defining a interface or schema for an array file of a sub document type.
+    15.2 Read further into `HydratedDocument` in mongoose. Might need to change the return types of documents from MongoDB for TS to infer Mongoose specific features.
 
 ## Testing Strategy
 
