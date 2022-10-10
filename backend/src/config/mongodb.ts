@@ -41,8 +41,8 @@ export const connectToMongodb = async () => {
     console.warn('mongoose error:\n' + error);
   });
 
-  mongoose.connection.on('disconected', () => {
-    console.warn('mongoose disconected');
+  mongoose.connection.on('disconnected', () => {
+    console.warn('mongoose disconnected');
   });
 
   process.on('SIGINT', () => {
@@ -63,5 +63,5 @@ export const disconnectFromMongodb = async () => {
 };
 
 function printUsageToStdout() {
-  console.log('Gracefully disonected mongodb');
+  console.log('Gracefully disconnected mongodb');
 }

@@ -111,6 +111,10 @@ docker logs mongodb
 15. Create user model, interface, routes and controller.
     15.1 Created the user model and interface. Will need to refactor the model later for strongly typed nested document models, read more [here](https://mongoosejs.com/docs/typescript/subdocuments.html). Read [this](https://mongoosejs.com/docs/typescript/schemas.html#arrays) when defining a interface or schema for an array file of a sub document type.
     15.2 Read further into `HydratedDocument` in mongoose. Might need to change the return types of documents from MongoDB for TS to infer Mongoose specific features.
+    15.3 Installed `bcrypt` to secure sensitive data encryption.
+    15.4 Research how to handle promise rejection within express middleware without breaking app flow.
+    15.5 How to write asynchronous routes and controllers in express.
+    15.6 How can the system handle updating a password? Updating a password or resetting one should use the existing update user route and refer the business logic to the client or a middleware to detect password change. Should research this further for best practice on managing user credentials in a DB and object.
 
 ## Testing Strategy
 
