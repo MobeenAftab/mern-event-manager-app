@@ -6,10 +6,11 @@ import {
   getUsers,
   updateUser,
 } from '../../controllers/user.controller';
+import { checkIfUserExists } from '../../middleware/user.middleware';
 
 const router = Router();
 
-router.post('/', createUser);
+router.post('/', checkIfUserExists, createUser);
 
 router.get('/', getUsers);
 
