@@ -10,6 +10,9 @@
 - Adhering to the OpenAPI v3 spec.
 - Generated swagger API documentation.
 - Generated code documentation.
+- ESlint for TS, formatting on save.
+- Authenticating users and providing authorisation to protected routes using JWT tokens.
+- Protecting routes with a role based access policy.
 
 # Running The App Locally
 
@@ -108,7 +111,10 @@ docker logs mongodb
     15.6 How can the system handle updating a password? Updating a password or resetting one should use the existing update user route and refer the business logic to the client or a middleware to detect password change. Should research this further for best practice on managing user credentials in a DB and object.
     15.7 Update the user search functionality to provide query filtering and sorting.
     15.8 Created http fixtures for testing endpoints and mock data for integration testing.
-    15.9 Created handlers for users integration testing. Testing will be a shallow smoke testing at this stage. Testing coverage can be improved at a later stage when the app can handle decrypting passwords, field validation on inputs like email, phone number, generating fake data on each run. Current integration tests only use mock requests and responses using [Mock Service Worker](https://mswjs.io/docs/), setup a test environment with docker and automate a test suite to test data flow simulating operations in live environment and.
+    15.9 Created handlers for users integration testing. Testing will be a shallow smoke testing at this stage. Testing coverage can be improved at a later stage when the app can handle decrypting passwords, field validation on inputs like email, phone number, generating fake data on each run. Current integration tests only use mock requests and responses using [Mock Service Worker](https://mswjs.io/docs/), setup a test environment with docker and automate a test suite to test data flow simulating operations in live environment.
+16. Using signed JWT to authorise a users requests to the app after they have been authorised (logged in) using a role based authorisation system.
+    16.1 Generated secret access and refresh tokens for JWT using `require('crypto').randomBytes(64).toString('hex')` inside node shell.
+    16.2 Installed npm packages cookie-parser cors jsonwebtoken. Using cors to whitelist origin request urls.
 
 ## Testing Strategy
 
@@ -170,6 +176,8 @@ Separation of concerns
 [Unit Testing Essentials for Express API: A Step-by-Step Guide](https://rrawat.com/blog/unit-test-express-api)
 
 [Service Worker Examples](https://github.com/mswjs/msw/tree/main/test/rest-api)
+
+[Introduction to JSON Web Tokens](https://jwt.io/introduction)
 
 ## Development Notes and TODOs
 
