@@ -1,8 +1,14 @@
 import { Router } from 'express';
-import { logIn } from '../../controllers/authentication.controller';
+import {
+  authRefreshToken,
+  logIn,
+  logOut,
+} from '../../controllers/authentication.controller';
 
 const router = Router();
 
-router.get('', logIn);
+router.get('/', logIn);
+router.get('/logout', logOut);
+router.get('/refresh-token', authRefreshToken);
 
 export default router;

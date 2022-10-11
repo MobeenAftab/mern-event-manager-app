@@ -115,6 +115,10 @@ docker logs mongodb
 16. Using signed JWT to authorise a users requests to the app after they have been authorised (logged in) using a role based authorisation system.
     16.1 Generated secret access and refresh tokens for JWT using `require('crypto').randomBytes(64).toString('hex')` inside node shell.
     16.2 Installed npm packages cookie-parser cors jsonwebtoken. Using cors to whitelist origin request urls.
+    16.3 Created process to verify user credentials for login authorisation. Created interfaces, models, controllers and helper functions for JSON web tokens and user login process.
+    16.4 Adding cookies to the login workflow response. Check if refresh token exists in cookie from request, if so verify it or issue a new one.
+    16.5 Saving refresh tokens to MongoDB, check if token exists or issue a new token.
+    16.6 Logout workflow, clear cookie cached in local client and remove refresh token from MongoDB.
 
 ## Testing Strategy
 

@@ -7,7 +7,7 @@ GET {{$dotenv BASE_URL}}
 GET {{baseUrl}}/
 
 ###
-
+# @name postLogin
 GET {{$dotenv BASE_URL}}/{{login}}/ HTTP/1.1
 content-type: application/json
 
@@ -15,5 +15,15 @@ content-type: application/json
     "email": "userOne@remail1.co.uk",
     "password": "IShouldBeHashed"
 }
+
+###
+
+@token = {{postLogin.response.body.refreshToken}}
+
+GET {{$dotenv BASE_URL}}/{{login}}/refresh-token/ HTTP/1.1
+content-type: application/json
+Set-Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ0MzU2YmNkMzE3ZDYzOTBjYTE3OWUiLCJlbWFpbCI6InVzZXJPbmVAcmVtYWlsMS5jby51ayIsImlhdCI6MTY2NTQ3ODQwNCwiZXhwIjoxNjY1NTY0ODA0fQ.QU59UCtUlW0I7-xEt1RksdTywxoLS-Bxd_cExuvJ0GU; Max-Age=86400; Path=/; Expires=Wed, 12 Oct 2022 08:53:24 GMT; HttpOnly; SameSite=None
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ0MzU2YmNkMzE3ZDYzOTBjYTE3OWUiLCJlbWFpbCI6InVzZXJPbmVAcmVtYWlsMS5jby51ayIsImlhdCI6MTY2NTQ3ODQwNCwiZXhwIjoxNjY1NTY0ODA0fQ.QU59UCtUlW0I7-xEt1RksdTywxoLS-Bxd_cExuvJ0GU; Max-Age=86400; Path=/; Expires=Wed, 12 Oct 2022 08:53:24 GMT; HttpOnly; SameSite=None
+
 
 ###

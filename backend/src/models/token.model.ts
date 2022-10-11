@@ -17,7 +17,8 @@ export interface IDecodedToken {
   user?: IUser;
   accessToken?: string;
   refreshToken?: string;
-  id: string;
+  userId: string;
+  email: string;
 }
 
 /**
