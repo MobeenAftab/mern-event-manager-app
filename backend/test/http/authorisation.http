@@ -1,0 +1,19 @@
+@baseUrl = http://localhost:3000/v1/
+@login = login
+
+GET {{$dotenv BASE_URL}}
+###
+
+GET {{baseUrl}}/
+
+###
+
+GET {{$dotenv BASE_URL}}/{{login}}/ HTTP/1.1
+content-type: application/json
+
+{
+    "email": "userOne@remail1.co.uk",
+    "password": "IShouldBeHashed"
+}
+
+###

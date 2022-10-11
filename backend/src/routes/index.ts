@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import authenticationRouter from './authentication/authentication.routes';
 import userRouter from './user/user.router';
 import workoutRouter from './workout/workout.router';
 
@@ -18,5 +19,6 @@ indexRouter.get('/throw-err', (req, res, next) => {
 
 indexRouter.use('/users', userRouter);
 indexRouter.use('/workouts', workoutRouter);
+indexRouter.use('/login', authenticationRouter);
 
 export default indexRouter;
