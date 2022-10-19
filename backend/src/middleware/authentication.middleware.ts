@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
+import { IDecodedToken } from '../models/token.model';
 
 /**
  * Verify JWT token for protected routes.
@@ -14,6 +15,7 @@ export const authenticateToken = async (
   next: NextFunction
 ) => {
   try {
+    // TODO: If no auth header is found will throw error on undefined toString
     const authHeader =
       (
         req.headers['authorization'] || req.headers['Authorization']
@@ -28,13 +30,24 @@ export const authenticateToken = async (
       return res.send(401).json({ msg: 'Token not found in request body' });
     }
 
-    verify(token, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
-      if (err) {
-        return res.status(403).json({ msg: 'Failed to decode token' });
+    /**
+     * If access token has expired from http header, should this middleware automatically
+     * use refresh token from cookie to generate a new access token?
+     *
+     * Revoke AC token if expired.
+     */
+    verify(
+      token,
+      process.env.ACCESS_TOKEN_SECRET,
+      (err, decoded: IDecodedToken) => {
+        if (err) {
+          return res.status(403).json({ msg: 'Failed to decode token' });
+        }
+        req.body.id = decoded.userId;
+        req.body.email = decoded.email;
+        next();
       }
-      req.body.id = decoded.userId;
-      next();
-    });
+    );
   } catch (error) {
     next(error);
   }

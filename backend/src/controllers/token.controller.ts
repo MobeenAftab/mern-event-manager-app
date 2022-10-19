@@ -19,7 +19,7 @@ export const generateToken = async (
   userId: Types.ObjectId,
   email: string,
   tokenSecret: string,
-  expiresIn: string
+  expiresIn: string | number = '1h'
 ) => {
   try {
     return await sign(

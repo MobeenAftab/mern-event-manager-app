@@ -37,5 +37,8 @@ const TokenSchema = new Schema<IToken>(
   { timestamps: true }
 );
 
+// TODO: Create a static virtual method that will delete any token stored in the db
+// that is older than the expiry policy.
+
 export const Token = model<IToken>('Token', TokenSchema);
 export type Tokens = Array<IToken>;

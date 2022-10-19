@@ -1,3 +1,4 @@
+import bcrypt from 'bcryptjs';
 import { model, Model, Schema, Types } from 'mongoose';
 
 export interface IUser {
@@ -21,6 +22,7 @@ export interface IUser {
 // Put all user instance methods in this interface:
 interface IUserMethods {
   fullName(): string;
+  isPasswordValid(): boolean;
 }
 
 // Create a new Model type that knows about IUserMethods...
@@ -48,6 +50,24 @@ const UserSchema = new Schema<IUser, UserModel, IUserMethods>(
 
 UserSchema.method('fullName', function fullName() {
   return this.firstName + ' ' + this.lastName;
+});
+
+UserSchema.method(
+  'isPasswordValid',
+  async function (this: UserModel, plainPassword: string) {
+    return bcrypt.compare(plainPassword, this);
+  }
+);
+
+// TODO: Add a pre hook validation to check if the password field has been touched,
+// if so hash the new password before update.
+
+UserSchema.set('toJSON', {
+  transform: (_: unknown, result: { password?: string; __v?: number }) => {
+    delete result.password;
+    delete result.__v;
+    return result;
+  },
 });
 
 export const User = model<IUser>('User', UserSchema);

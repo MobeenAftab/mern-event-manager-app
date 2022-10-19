@@ -1,5 +1,5 @@
-import bcrypt from 'bcrypt';
-import { NextFunction, Request, Response } from 'express';
+import bcrypt from 'bcryptjs';
+import { CookieOptions, NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 import { IAuthenticatedUser, IDecodedToken } from '../models/token.model';
 import {
@@ -36,7 +36,7 @@ export const logIn = async (
         });
       } else {
         res.status(404).json({
-          msg: 'Failed to authorise user.',
+          msg: 'Failed to authenticate user.',
           user: null,
         });
       }
@@ -52,7 +52,7 @@ export const authRefreshToken = async (
   next: NextFunction
 ) => {
   try {
-    const { cookies } = req.cookies;
+    const cookies = req.cookies;
 
     if (!cookies?.jwt) {
       return res.status(403).json({
@@ -67,6 +67,7 @@ export const authRefreshToken = async (
         if (err) {
           return res.status(403).json({ msg: 'Failed to decode token' });
         } else {
+          const tokenDoc = await deleteRefreshToken(refreshToken);
           const accessToken: IDecodedToken = await generateToken(
             decoded.userId,
             decoded.email,
@@ -74,6 +75,7 @@ export const authRefreshToken = async (
             '30m'
           );
           res.status(200).json({
+            oldRefreshToken: tokenDoc,
             accessToken,
           });
         }
@@ -153,4 +155,18 @@ export const authenticateUser = async (
   } catch (error) {
     return error;
   }
+};
+
+export const setCookieToken = async (
+  res: Response,
+  token: string,
+  cookieName: string = 'jwt'
+) => {
+  const cookieOption: CookieOptions = {
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000,
+    sameSite: 'none',
+  }; //secure: true, cannot secure unless sent over HTTPS
+
+  return res.cookie(cookieName, token, cookieOption);
 };
