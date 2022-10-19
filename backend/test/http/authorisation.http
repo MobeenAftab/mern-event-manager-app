@@ -1,0 +1,27 @@
+@baseUrl = http://localhost:3000/v1/
+@login = login
+
+GET {{$dotenv BASE_URL}}
+###
+
+GET {{baseUrl}}/
+
+###
+# @name postLogin
+GET {{$dotenv BASE_URL}}/{{login}}/ HTTP/1.1
+content-type: application/json
+
+{
+    "email": "usersTwo@remail1.co.uk",
+    "password": "IShouldBeHashed"
+}
+
+###
+
+@token = {{postLogin.response.body.refreshToken}}
+
+GET {{$dotenv BASE_URL}}/{{login}}/refresh-token/ HTTP/1.1
+content-type: application/json
+Cookie: @{{token}}
+Set-Cookie: @{{token}}
+###

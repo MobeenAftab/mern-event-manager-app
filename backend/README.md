@@ -10,6 +10,9 @@
 - Adhering to the OpenAPI v3 spec.
 - Generated swagger API documentation.
 - Generated code documentation.
+- ESlint for TS, formatting on save.
+- Authenticating users and providing authorisation to protected routes using JWT tokens.
+- Protecting routes with a role based access policy.
 
 # Running The App Locally
 
@@ -108,7 +111,18 @@ docker logs mongodb
     15.6 How can the system handle updating a password? Updating a password or resetting one should use the existing update user route and refer the business logic to the client or a middleware to detect password change. Should research this further for best practice on managing user credentials in a DB and object.
     15.7 Update the user search functionality to provide query filtering and sorting.
     15.8 Created http fixtures for testing endpoints and mock data for integration testing.
-    15.9 Created handlers for users integration testing. Testing will be a shallow smoke testing at this stage. Testing coverage can be improved at a later stage when the app can handle decrypting passwords, field validation on inputs like email, phone number, generating fake data on each run. Current integration tests only use mock requests and responses using [Mock Service Worker](https://mswjs.io/docs/), setup a test environment with docker and automate a test suite to test data flow simulating operations in live environment and.
+    15.9 Created handlers for users integration testing. Testing will be a shallow smoke testing at this stage. Testing coverage can be improved at a later stage when the app can handle decrypting passwords, field validation on inputs like email, phone number, generating fake data on each run. Current integration tests only use mock requests and responses using [Mock Service Worker](https://mswjs.io/docs/), setup a test environment with docker and automate a test suite to test data flow simulating operations in live environment.
+16. Using signed JWT to authenticate users and authorise incoming requests to the app.
+    16.1 Generated secret access and refresh tokens for JWT using `require('crypto').randomBytes(64).toString('hex')` inside node shell.
+    16.2 Installed npm packages cookie-parser cors jsonwebtoken. Using cors to whitelist origin request urls.
+    16.3 Created process to verify user credentials for login authorisation. Created interfaces, models, controllers and helper functions for JSON web tokens and user login process.
+    16.4 Adding cookies to the login workflow response. Check if refresh token exists in cookie from request, Issue a new access token if old one is expired based on this refresh token.
+    16.5 Saving refresh tokens to MongoDB, check if token exists before issuing a new token. Delete refresh token from db if user logged out.
+    16.6 Logout workflow, clear cookie cached in local client and remove refresh token from MongoDB.
+    16.7 Docker error with the `bcrypt` library for hashing password, removed and installed `bcryptjs`.
+    16.8 Refresh token endpoint to generate a new access token from the refresh token stored in the cookie.
+    16.9 Decided to leave the authorisation and authentication flow at this basic level for now. This should be revisited after doing more research into the following: - Detecting if a users password has changed, revoke tokens if so. - Generating refresh tokens based on a users password, created at time to prevent reverse engineering and hijacking of a refresh token. - Add an array of refresh tokens to the User schema to handle multiple device login. - How to handle the flow of automatically generating a new access token based on a refresh token. - Security implications of long lived refresh tokens.
+    16.10 Updated user model to strip the password field from being returned in user model requests.
 
 ## Testing Strategy
 
@@ -171,6 +185,8 @@ Separation of concerns
 
 [Service Worker Examples](https://github.com/mswjs/msw/tree/main/test/rest-api)
 
+[Introduction to JSON Web Tokens](https://jwt.io/introduction)
+
 ## Development Notes and TODOs
 
 A list of notes and potential features to keep track for this project.
@@ -197,3 +213,33 @@ Export the validation to the db conn and register the schema validation there.
 1. create the default db on mongo init
 2. create a user with the correct roles and permissions
 3. update the mongo connection string
+
+## Auth login route notes
+
+Login process
+
+Input: email, password
+
+process
+
+1. Verify credentials
+2. generate access and refresh tokens
+3. Set refresh token in cookie header
+4. Return json
+
+Output: userObj, access, refresh
+
+Auth flow
+
+1. Give access token 5min life.
+2. Send refresh token along with output as cookie.
+3. Use AC token to access resources and routes.
+4. If AC token is expired, generate new token from refresh token endpoint
+5. Return new AC token to access resources
+6. On logout remove RF and AC token.
+7. Should tokens be stored in DB?
+8. Refresh token is stored in cookie, only logout if it is not verified.
+
+- To check if the token is expired use verify from jwt lib
+- A common approach for invalidating tokens when a user changes their password is to sign the token with a hash of their password. Thus if the password changes, any previous tokens automatically fail to verify.
+  https://stackoverflow.com/questions/21978658/invalidating-json-web-tokens/52407314#52407314

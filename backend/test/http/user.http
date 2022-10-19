@@ -7,8 +7,11 @@ GET {{$dotenv BASE_URL}}
 GET {{baseUrl}}/
 
 ###
+### Requires a valid refresh token to access this endpoint.
 
 GET {{$dotenv BASE_URL}}/{{users}}/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzQ0MzU2YmNkMzE3ZDYzOTBjYTE3OWUiLCJlbWFpbCI6InVzZXJPbmVAcmVtYWlsMS5jby51ayIsImlhdCI6MTY2NTQ3NTA1NywiZXhwIjoxNjY1NTYxNDU3fQ.IS2eXD13jbXNS4I7JQIaXrmX1BTYT2nhPesBqAIHFLU
 
 ###
 

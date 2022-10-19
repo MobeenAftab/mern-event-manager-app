@@ -6,13 +6,14 @@ import {
   getUsers,
   updateUser,
 } from '../../controllers/user.controller';
+import { authenticateToken } from '../../middleware/authentication.middleware';
 import { checkIfUserExists } from '../../middleware/user.middleware';
 
 const router = Router();
 
 router.post('/', checkIfUserExists, createUser);
 
-router.get('/', getUsers);
+router.get('/', authenticateToken, getUsers);
 
 router.get('/:id', getUser);
 
